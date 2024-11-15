@@ -7,7 +7,7 @@ export class Tragamoneda {
     }
 
      numeroRandom(){
-        let numeroRandom = Math.random()*3;
+        let numeroRandom = Math.random()*7;
         return Math.round(numeroRandom);
     }
 
