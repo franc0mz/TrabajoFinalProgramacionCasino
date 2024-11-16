@@ -52,7 +52,7 @@ import { Tragamoneda } from './TragamonedaIcon';
             switch (elegir) {
                 case 1:
                     console.log("Opción 1: Tragamonedas");
-                    //Tragamoneda()
+                    menuTragamonedas()
                     break;
                 case 2:
                     console.log("Opción 2: BlackJack");
@@ -102,6 +102,47 @@ import { Tragamoneda } from './TragamonedaIcon';
                     break;
             }
     }
+
+    function menuTragamonedas(){
+        console.clear();
+        console.log(
+            "----------------------------------------\n" +
+            "1 - Instrucciones\n" +
+            "2 - Jugar\n" +
+            "3 - Saldo Actual\n" +
+            "4 - Volver al menu principal\n" +
+            "----------------------------------------"
+            )
+            let elegir:number = rls.questionInt("Escriba el numero de la opcion deseada: ")
+            console.clear()
+            switch (elegir) {
+                case 1:
+                    console.log("Opción 1: Instrucciones");
+                    //Instrucciones()
+                    break;
+                case 2:
+                    console.log("Opción 2: Jugar");
+                    //PROVICIONAL
+                    let tragamoneda1 = new Tragamoneda("tragamoneda");
+                    tragamoneda1.juego();
+                    break;
+                case 3:
+                    console.log("Opción 3: Saldo Actual");
+                    //saldoActual()
+                    break;
+                case 4:
+                    console.log("Opción 4: Volver al menu principal");
+                    menuPrincipal()
+                    break;
+                default:
+                    console.log("Opción no válida. Por favor, elige entre 1 y 4.");
+                    setTimeout(() => {
+                        menuTragamonedas(); 
+                    }, 2000);
+                    break;
+            }
+    }
+
 
 menuPrincipal()
 
