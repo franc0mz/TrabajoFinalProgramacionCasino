@@ -2,7 +2,7 @@ import * as rls from 'readline-sync';
 import { Tragamoneda } from './TragamonedaIcon';
 
     function menuPrincipal() {
-        console.clear()
+        console.clear();
         console.log(
             "Bienvenido al Casino\n" +
             "----------------------------------------\n" +
@@ -12,7 +12,7 @@ import { Tragamoneda } from './TragamonedaIcon';
             "4 - Salir\n" +
             "----------------------------------------")
         let elegir:number = rls.questionInt("Escriba el numero de la opcion deseada: ")
-        console.clear()
+        console.clear();
         switch (elegir) {
             case 1:
                 console.log("Opción 1: Instrucciones");
@@ -38,7 +38,7 @@ import { Tragamoneda } from './TragamonedaIcon';
             }
 
     function menuJuegos(){
-        console.clear()
+        console.clear();
         console.log(
             "----------------------------------------\n" +
             "1 - Tragamonedas\n" +
@@ -76,15 +76,15 @@ import { Tragamoneda } from './TragamonedaIcon';
     }
 
     function menuSaldo(){
-        console.clear()
+        console.clear();
         console.log(
             "----------------------------------------\n" +
             "1 - Saldo Actual\n" +
             "2 - Volver al menu principal\n" +
             "----------------------------------------"
             )
-            let elegir:number = rls.questionInt("Escriba el numero del juego deseado: ")
-            console.clear()
+            let elegir:number = rls.questionInt("Escriba el numero del juego deseado: ");
+            console.clear();
             switch (elegir) {
                 case 1:
                     console.log("Opción 1: Saldo Actual");
