@@ -6,7 +6,6 @@ export class Tragamoneda {
         this.nombre = nombre;
     }
 
-    // Definir los emojis de frutas
     private frutas: string[] = ['🍎', '🍌', '🍉'];
 
     numeroRandom(): string {
