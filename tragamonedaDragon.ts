@@ -6,7 +6,7 @@ export class Tragamoneda {
         this.nombre = nombre;
     }
 
-    private frutas: string[] = ['🔥​', '⛩️​', '🐲​​'];
+    private frutas: string[] = [' 🔥​ ', ' 🐲​ ', ' ⛩️ ​​'];
 
     numeroRandom(): string {
         // Generar un número aleatorio entre 0 y 2 y devolver el emoji correspondiente
