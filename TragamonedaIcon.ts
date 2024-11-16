@@ -1,4 +1,7 @@
-export class Tragamoneda {
+import { InterfazSaldo } from "./InterfazSaldo";
+import { Sesion } from "./Sesion";
+
+export class Tragamoneda implements InterfazSaldo{
 
     public nombre: string;
 
@@ -23,11 +26,26 @@ export class Tragamoneda {
 
         if (numero1 === numero2 && numero2 === numero3) {
             console.log("GANASTE");
+           
         } else {
             console.log("QUE MALA SUERTE, INTENTA DE NUEVO");
         }
     }
+
+    mostrarInstrucciones(){
+        console.log("Intrucciones tragamoneda")
+    };
+
+    mostrarSaldo(){
+        return 
+    };
+
+    modificarSaldo(){ 
+        return   2    
+    };
+
 }
 
 let tragamoneda1 = new Tragamoneda("tragamoneda");
 tragamoneda1.juego();
+

@@ -6,30 +6,26 @@ import { Tragamoneda } from './TragamonedaIcon';
         console.log(
             "Bienvenido al Casino\n" +
             "----------------------------------------\n" +
-            "1 - Instrucciones\n" +
-            "2 - Juegos\n" +
-            "3 - Saldo\n" +
-            "4 - Salir\n" +
+            "1 - Juegos\n" +
+            "2 - Saldo\n" +
+            "3 - Salir\n" +
             "----------------------------------------")
         let elegir:number = rls.questionInt("Escriba el numero de la opcion deseada: ")
         console.clear();
         switch (elegir) {
             case 1:
-                console.log("Opción 1: Instrucciones");
-                break;
-            case 2:
-                console.log("Opción 2: Juegos");
+                console.log("Opción 1: Juegos");
                 menuJuegos()
                 break;
-            case 3:
-                console.log("Opción 3: Saldo");
+            case 2:
+                console.log("Opción 2: Saldo");
                 menuSaldo()
                 break;
-            case 4:
-                console.log("Opción 4: Salir Completamente");
+            case 3:
+                console.log("Opción 3: Salir Completamente");
                 break;
             default:
-                console.log("Opcion no válida. Por favor, elige entre 1 y 4.");
+                console.log("Opcion no válida. Por favor, elige entre 1 y 3.");
                 setTimeout(() => {
                     menuPrincipal(); 
                 }, 2000);
@@ -123,8 +119,11 @@ import { Tragamoneda } from './TragamonedaIcon';
                 case 2:
                     console.log("Opción 2: Jugar");
                     //PROVICIONAL
-                    let tragamoneda1 = new Tragamoneda("tragamoneda");
-                    tragamoneda1.juego();
+                    let tragamoneda1 = new Tragamoneda("tragamoneda");                    
+                    tragamoneda1.juego(); 
+                    setTimeout(() => {
+                        menuTragamonedas()
+                    }, 2000);                   
                     break;
                 case 3:
                     console.log("Opción 3: Saldo Actual");
