@@ -11,7 +11,7 @@ import { Tragamoneda } from './TragamonedaIcon';
             "3 - Saldo\n" +
             "4 - Salir\n" +
             "----------------------------------------")
-        let elegir:number = rls.questionInt("Elija la opcion 1-2-3-4: ")
+        let elegir:number = rls.questionInt("Escriba el numero de la opcion deseada: ")
         console.clear()
         switch (elegir) {
             case 1:
@@ -30,7 +30,9 @@ import { Tragamoneda } from './TragamonedaIcon';
                 break;
             default:
                 console.log("Opcion no válida. Por favor, elige entre 1 y 4.");
-                menuPrincipal()
+                setTimeout(() => {
+                    menuPrincipal(); 
+                }, 2000);
                 break;
         }
             }
@@ -42,7 +44,7 @@ import { Tragamoneda } from './TragamonedaIcon';
             "1 - Tragamonedas\n" +
             "2 - Blackjack\n" +
             "3 - Dados\n" +
-            "4 - Salir\n" +
+            "4 - Volver al menu principal\n" +
             "----------------------------------------"
             )
             let elegir:number = rls.questionInt("Escriba el numero del juego deseado: ")
@@ -66,7 +68,9 @@ import { Tragamoneda } from './TragamonedaIcon';
                     break;
                 default:
                     console.log("Opción no válida. Por favor, elige entre 1 y 4.");
-                    menuJuegos()
+                    setTimeout(() => {
+                        menuJuegos(); 
+                    }, 2000);
                     break;
             }
     }
@@ -76,7 +80,7 @@ import { Tragamoneda } from './TragamonedaIcon';
         console.log(
             "----------------------------------------\n" +
             "1 - Saldo Actual\n" +
-            "2 - Salir al menu principal\n" +
+            "2 - Volver al menu principal\n" +
             "----------------------------------------"
             )
             let elegir:number = rls.questionInt("Escriba el numero del juego deseado: ")
@@ -92,7 +96,9 @@ import { Tragamoneda } from './TragamonedaIcon';
                     break;
                 default:
                     console.log("Opción no válida. Por favor, elige entre 1 y 2");
-                    menuSaldo()
+                    setTimeout(() => {
+                        menuSaldo(); 
+                    }, 2000);
                     break;
             }
     }
