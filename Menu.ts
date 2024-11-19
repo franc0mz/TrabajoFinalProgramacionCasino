@@ -143,6 +143,7 @@ export class Menu{
                     while (elegir===1) {
                         tragamoneda.juego(casino)
                          elegir= rls.questionInt("Seguir jugando 1: \nVolver al menu 2: ")
+                         console.clear()
                     } 
 
                     this.menuTragamonedas(casino,tragamoneda)
