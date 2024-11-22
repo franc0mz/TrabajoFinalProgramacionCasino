@@ -1,0 +1,3 @@
+npm install readline-sync
+npm install --save-dev @types/node
+tsc --init
