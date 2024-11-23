@@ -8,12 +8,11 @@ export class Tragamoneda extends MaquinaDeJuego{
         throw new Error('Method not implemented.');
     }
 
-    public nombre: string;
+   
     public apuesta: number;
     public multiplicador:number;
     constructor(nombre: string) {
-        super(nombre)
-        this.nombre = nombre;
+        super(nombre)  
         this.apuesta= 5;
         this.multiplicador= 2;
     }
@@ -33,7 +32,6 @@ export class Tragamoneda extends MaquinaDeJuego{
     juego(casino : Casino) {
         if (casino.getSaldo()-this.apuesta >= 0) {
 
-            let apuesta :number;
             let numero1: number;
             let numero2: number;
             let numero3: number;

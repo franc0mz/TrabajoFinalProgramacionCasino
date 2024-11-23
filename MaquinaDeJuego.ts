@@ -15,6 +15,10 @@ constructor(nombre:string){
 abstract setApuesta(apuesta:number):void;
 abstract juego(casino:Casino):void;
 
+numeroRandom(numLimite:number) {
+    let numeroRandom = Math.random() * numLimite;
+    return Math.round(numeroRandom);
+}
 
 
 }

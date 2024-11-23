@@ -1,6 +1,6 @@
 export interface InterfazSaldo {
-    mostrarInstrucciones();
-    mostrarSaldo();
-    modificarSaldo();
+    mostrarInstrucciones():void;
+    mostrarSaldo():void;
+    modificarSaldo():void;
 
 }

@@ -2,6 +2,7 @@ import * as rls from 'readline-sync';
 import { Tragamoneda } from './Tragamoneda';
 import { Casino } from './Casino';
 import fs from 'node:fs'
+import { MaquinaDeJuego } from './MaquinaDeJuego';
 
 export class Menu {
     public nombre: string;
@@ -23,39 +24,38 @@ export class Menu {
     
     mostrarInstrucciones(instrucciones: string) {
         
-        let instrTrag: string = instrucciones.trim();
-        let mostrInstrTragamones: string[] = instrTrag.split(" ")
-        return console.log(mostrInstrTragamones.join(' '));
+        let instrTragamoneda: string = instrucciones.trim();
+        let mostrInstrTragamoneda: string[] = instrTragamoneda.split(" ")
+        return console.log(mostrInstrTragamoneda.join(' '));
     }
     menuPrincipal(casino: Casino, tragamoneda: Tragamoneda) {
         console.clear();
         console.log(
             "Bienvenido al Casino\n" +
             "----------------------------------------\n" +
-            "1 - Instrucciones\n" +
-            "2 - Juegos\n" +
-            "3 - Saldo\n" +
-            "4 - Salir\n" +
+            "1 - Juegos\n" +
+            "2 - Saldo\n" +
+            "0 - Salir\n" +
             "----------------------------------------")
         let elegir: number = rls.questionInt("Escriba el numero de la opcion deseada: ")
         console.clear();
         switch (elegir) {
             case 1:
-                console.log("Opción 1: Instrucciones");
-                break;
-            case 2:
-                console.log("Opción 2: Juegos");
+                console.log("Opción 1: Juegos");
                 this.menuJuegos(casino, tragamoneda)
                 break;
-            case 3:
-                console.log("Opción 3: Saldo");
+            case 2:
+                console.log("Opción 2: Saldo");
                 this.menuSaldo(casino, tragamoneda)
                 break;
-            case 4:
-                console.log("Opción 4: Salir Completamente");
+            case 0:
+                console.log("Vuelva Pronto");
+                setTimeout(() => {
+                     
+                }, 2000);
                 break;
             default:
-                console.log("Opcion no válida. Por favor, elige entre 1 y 4.");
+                console.log("Opcion no válida. Por favor, elige entre 0 y 2.");
                 setTimeout(() => {
                     this.menuPrincipal(casino, tragamoneda);
                 }, 2000);
@@ -70,7 +70,7 @@ export class Menu {
             "1 - Tragamonedas\n" +
             "2 - Blackjack\n" +
             "3 - Dados\n" +
-            "4 - Volver al menu principal\n" +
+            "0 - Volver al menu principal\n" +
             "----------------------------------------"
         )
         let elegir: number = rls.questionInt("Escriba el numero del juego deseado: ")
@@ -89,11 +89,11 @@ export class Menu {
                 //Dados()
                 break;
             case 4:
-                console.log("Opción 4: Volver al menu principal");
+                console.log("Opción 0: Volver al menu principal");
                 this.menuPrincipal(casino, tragamoneda)
                 break;
             default:
-                console.log("Opción no válida. Por favor, elige entre 1 y 4.");
+                console.log("Opción no válida. Por favor, elige entre 0 y 3.");
                 setTimeout(() => {
                     this.menuJuegos(casino, tragamoneda);
                 }, 2000);
@@ -106,24 +106,24 @@ export class Menu {
         console.log(
             "----------------------------------------\n" +
             "1 - Saldo Actual\n" +
-            "2 - Volver al menu principal\n" +
+            "0 - Volver al menu principal\n" +
             "----------------------------------------"
         )
         let elegir: number = rls.questionInt("Escriba el numero del juego deseado: ");
         console.clear();
         switch (elegir) {
             case 1:
-                console.log(`Opción 4: Saldo Actual : ${casino.getSaldo()}`)
+                console.log(`Opción 1: Saldo Actual : ${casino.getSaldo()}`)
                 setTimeout(() => {
-                    this.menuTragamonedas(casino, tragamoneda)
+                    this.menuSaldo(casino, tragamoneda)
                 }, 2000)
                 break;
-            case 2:
-                console.log("Opción 2: Menu Principal");
+            case 0:
+                console.log("Opción 0: Menu Principal");
                 this.menuPrincipal(casino, tragamoneda)
                 break;
             default:
-                console.log("Opción no válida. Por favor, elige entre 1 y 2");
+                console.log("Opción no válida. Por favor, elige entre 0 y 1");
                 setTimeout(() => {
                     this.menuSaldo(casino, tragamoneda);
                 }, 2000);
@@ -131,7 +131,7 @@ export class Menu {
         }
     }
 
-    menuTragamonedas(casino: Casino, tragamoneda: Tragamoneda) {
+    menuTragamonedas(casino: Casino, MaquinaDeJuego: MaquinaDeJuego) {
 
         console.clear();
         console.log(
@@ -140,7 +140,7 @@ export class Menu {
             "2 - Jugar\n" +
             "3 - Modificar Apuesta\n" +
             "4 - Saldo Actual\n" +
-            "5 - Volver al menu principal\n" +
+            "0 - Volver al menu principal\n" +
             "----------------------------------------"
         )
         let elegir: number = rls.questionInt("Escriba el numero de la opcion deseada: ")
@@ -151,25 +151,25 @@ export class Menu {
                 //Instrucciones()
                 this.mostrarInstrucciones(this.instruccionesTragamonedas);
                 setTimeout(() => {
-                    this.menuTragamonedas(casino, tragamoneda);
-                }, 2000);
+                    this.menuTragamonedas(casino, MaquinaDeJuego);
+                }, 7000);
                 break;
             case 2:
                 console.log("Opción 2: Jugar");
                 let elegir: number = 1
                 while (elegir === 1) {
-                    tragamoneda.juego(casino)
+                    this.tragamoneda.juego(casino)
                     elegir = rls.questionInt("Seguir jugando 1: \nVolver al menu 2: ")
                     console.clear()
                 }
 
-                this.menuTragamonedas(casino, tragamoneda)
+                this.menuTragamonedas(casino, MaquinaDeJuego)
 
                 break;
 
             case 3:
-                console.log(`Opción 3: Modificar apuesta`)
-                this.menuModificarApuesta(casino, tragamoneda)
+                console.log("Opción 3: Modificar apuesta")
+                this.menuModificarApuesta(casino, this.tragamoneda)
               //  setTimeout(() => {
             //        this.menuTragamonedas(casino, tragamoneda)
             //    }, 2000)
@@ -179,18 +179,18 @@ export class Menu {
                 //saldoActual()
                 console.log(`Opción 4: Saldo Actual : ${casino.getSaldo()}`)
                 setTimeout(() => {
-                    this.menuTragamonedas(casino, tragamoneda)
+                    this.menuTragamonedas(casino, this.tragamoneda)
                 }, 2000)
                 break;
-            case 5:
-                console.log("Opción 5: Volver al menu principal");
-                this.menuPrincipal(casino, tragamoneda)
+            case 0:
+                console.log("Opción 0: Volver al menu principal");
+                this.menuPrincipal(casino, this.tragamoneda)
                 break;
             default:
                 console.log("Opción no válida. Por favor, elige entre 1 y 4.");
-
-                this.menuTragamonedas(casino, tragamoneda);
-
+                setTimeout(() => {  
+                    this.menuTragamonedas(casino, this.tragamoneda);                
+                }, 2000)
                 break;
         }
     }
@@ -203,8 +203,8 @@ export class Menu {
             "----------------------------------------\n" +
             "1 - Valor de la apuesta 5\n" +
             "2 - Valor de la apuesta 10\n" +
-            "3 - Valor de la apuesta 15\n" +
-            "4 - Volver al menu principal\n" +
+            "3 - Valor de la apuesta 12\n" +
+            "0 - Volver al menu principal\n" +
             "----------------------------------------"
         )
         let elegir: number = rls.questionInt("Escriba el numero de la opcion deseada: ")
@@ -228,8 +228,7 @@ export class Menu {
                 break;
 
             case 3:
-                //saldoActual()
-                console.log(`Opción 3: Valor de la apuesta 12`)
+                console.log("Opción 3: Valor de la apuesta 12")
                 tragamoneda.setApuesta(12)
                 tragamoneda.setMuliplicador(4)
                 setTimeout(() => {
@@ -237,15 +236,15 @@ export class Menu {
                 }, 2000)
                 break;
 
-            case 4:
-                console.log("Opción 4: Volver al menu principal");
+            case 0:
+                console.log("Opción 0: Volver al menu principal");
                 this.menuPrincipal(casino, tragamoneda)
                 break;
             default:
-                console.log("Opción no válida. Por favor, elige entre 1 y 4.");
-
-                this.menuTragamonedas(casino, tragamoneda);
-
+                console.log("Opción no válida. Por favor, elige entre 0 y 3.");              
+                setTimeout(() => {  
+                    this.menuTragamonedas(casino, tragamoneda);                
+                }, 2000)
                 break;
         }
     }

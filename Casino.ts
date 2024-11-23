@@ -6,8 +6,7 @@ export class Casino {
     public juego: Tragamoneda;
     constructor(nombre: string,juego:Tragamoneda){
         this.nombre=nombre;
-        this.saldo=10000;
-        
+        this.saldo=10000; 
         this.juego= juego;
         
 
