@@ -4,11 +4,7 @@ import { MaquinaDeJuego } from "./MaquinaDeJuego";
 
 
 export class Tragamoneda extends MaquinaDeJuego{
-    static juego() {
-        throw new Error('Method not implemented.');
-    }
-
-   
+       
     public apuesta: number;
     public multiplicador:number;
     constructor(nombre: string) {
