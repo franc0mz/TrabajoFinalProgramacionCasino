@@ -249,6 +249,8 @@ export class Menu {
       case 1:
         console.log("Opción 1: Valor de la apuesta 5");
         tragamoneda.setApuesta(5);
+        this.tragamoneda2.setApuesta(5);
+        
         setTimeout(() => {
           this.menuTragamonedas(casino, tragamoneda);
         }, 2000);
@@ -269,6 +271,8 @@ export class Menu {
         console.log("Opción 3: Valor de la apuesta 12");
         tragamoneda.setApuesta(12);
         tragamoneda.setMuliplicador(4);
+        this.tragamoneda2.setApuesta(12);
+        this.tragamoneda2.setMuliplicador(4);
         setTimeout(() => {
           this.menuTragamonedas(casino, tragamoneda);
         }, 2000);
