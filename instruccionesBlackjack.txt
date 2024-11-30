@@ -1,2 +1,3 @@
 Obtén una puntuacion mayor que la de la casa sin superar los 21.
 Si te pasas de 21, pierdes automáticamente.
+Si tu y la casa tienen mismo puntaje recuperas lo apostado en esa ronda.
