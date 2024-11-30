@@ -188,7 +188,7 @@ export class Menu {
         let elegir: number = 1;
         while (elegir === 1) {
           this.tragamoneda.juego(casino);
-          elegir = rls.questionInt("Seguir jugando 1: \nVolver al menu 2: ");
+          elegir = rls.questionInt("1) Seguir jugando, 2) Volver al menu: ");
           console.clear();
         }
 
@@ -200,7 +200,7 @@ export class Menu {
         let elegir2 = 1;
         while (elegir2 === 1) {
             this.tragamoneda2.juego(casino);
-          elegir2 = rls.questionInt("Seguir jugando 1: \nVolver al menu 2: ");
+            elegir = rls.questionInt("1) Seguir jugando, 2) Volver al menu: ");
           console.clear();
         }
 
@@ -324,7 +324,7 @@ export class Menu {
           let elegir: number = 1;
           while (elegir === 1) {
             this.blackjack.juego(casino);
-            elegir = rls.questionInt("Seguir jugando 1: \nVolver al menu 2: ");
+            elegir = rls.questionInt("1) Seguir jugando, 2) Volver al menu: ");
             console.clear();
           }
 
@@ -342,7 +342,7 @@ export class Menu {
           this.menuPrincipal(casino, this.tragamoneda,this.tragamoneda2,this.blackjack, this.dado);
           break;
         default:
-          console.log("Opción no válida. Por favor, elige entre 1 y 4.");
+          console.log("Opción no válida. Por favor, elige entre 0 y 3.");
           setTimeout(() => {
             this.menuBlackjack(casino, this.tragamoneda);
           }, 2000);
@@ -378,7 +378,7 @@ export class Menu {
         let elegir: number = 1;
         while (elegir === 1) {
           this.dado.juego(casino);
-          elegir = rls.questionInt("Seguir jugando 1: \nVolver al menu 2: ");
+          elegir = rls.questionInt("1) Seguir jugando, 2) Volver al menu: ");
           console.clear();
         }
 
@@ -405,4 +405,5 @@ export class Menu {
     }
   }
 }
+
 
