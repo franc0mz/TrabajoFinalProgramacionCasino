@@ -316,7 +316,7 @@ export class Menu {
           //Instrucciones()
           this.mostrarInstrucciones(this.instruccionesBlackjack);
           setTimeout(() => {
-            this.menuTragamonedas(casino, MaquinaDeJuego);
+            this.menuBlackjack(casino, MaquinaDeJuego);
           }, 7000);
           break;
         case 2:
@@ -327,11 +327,14 @@ export class Menu {
             elegir = rls.questionInt("Seguir jugando 1: \nVolver al menu 2: ");
             console.clear();
           }
+
+          this.menuBlackjack(casino, MaquinaDeJuego);
+
           break;
           case 3:
           console.log(`Opción 3: Saldo Actual : ${casino.getSaldo()}`);
           setTimeout(() => {
-            this.menuTragamonedas(casino, this.tragamoneda);
+            this.menuBlackjack(casino, this.tragamoneda);
           }, 2000);
           break;
         case 0:
@@ -341,7 +344,7 @@ export class Menu {
         default:
           console.log("Opción no válida. Por favor, elige entre 1 y 4.");
           setTimeout(() => {
-            this.menuTragamonedas(casino, this.tragamoneda);
+            this.menuBlackjack(casino, this.tragamoneda);
           }, 2000);
           break;
       }
@@ -402,3 +405,4 @@ export class Menu {
     }
   }
 }
+
