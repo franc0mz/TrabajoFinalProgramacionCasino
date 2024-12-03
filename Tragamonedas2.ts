@@ -1,15 +1,16 @@
 import { Casino } from "./Casino";
+import { interfaceApuesta } from "./InterfazApuesta";
 
 import { MaquinaDeJuego } from "./MaquinaDeJuego";
 
 
-export class Tragamoneda2 extends MaquinaDeJuego{
+export class Tragamoneda2 extends MaquinaDeJuego implements interfaceApuesta{
        
     public apuesta: number;
     public multiplicador:number;
     constructor(nombre: string) {
         super(nombre)  
-        this.apuesta= 5;
+        this.apuesta= 10;
         this.multiplicador= 2;
     }
 

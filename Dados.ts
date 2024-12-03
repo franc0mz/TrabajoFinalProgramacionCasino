@@ -1,7 +1,8 @@
 import * as rls from "readline-sync";
 import { MaquinaDeJuego } from "./MaquinaDeJuego";
 import { Casino } from "./Casino";
-export class Dado extends MaquinaDeJuego {
+import { interfaceApuesta } from "./InterfazApuesta";
+export class Dado extends MaquinaDeJuego implements interfaceApuesta {
   constructor(nombre: string) {
     super(nombre);
     this.apuesta = 5;

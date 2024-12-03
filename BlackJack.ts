@@ -1,8 +1,9 @@
 import * as rls from "readline-sync";
 import { MaquinaDeJuego } from "./MaquinaDeJuego";
 import { Casino } from "./Casino";
-import { constrainedMemory } from "process";
-export class BlackJack extends MaquinaDeJuego{
+import { interfaceApuesta } from "./InterfazApuesta";
+
+export class BlackJack extends MaquinaDeJuego implements interfaceApuesta{
 
     constructor(nombre:string){
         super(nombre)
@@ -15,8 +16,7 @@ export class BlackJack extends MaquinaDeJuego{
       }
 
 juego(casino:Casino){
-    let contadorUsuario:number;
-    let contadorCasino:number;
+    
     console.log("Tu saldo acutal es: " + casino.getSaldo());
     this.setApuesta(this.apuesta)
     if (casino.getSaldo() - this.apuesta <= 0) {

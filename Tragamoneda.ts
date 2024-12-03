@@ -1,9 +1,10 @@
 import { Casino } from "./Casino";
+import { interfaceApuesta } from "./InterfazApuesta";
 
 import { MaquinaDeJuego } from "./MaquinaDeJuego";
 
 
-export class Tragamoneda extends MaquinaDeJuego{
+export class Tragamoneda extends MaquinaDeJuego implements interfaceApuesta {
        
     public apuesta: number;
     public multiplicador:number;
@@ -24,7 +25,7 @@ export class Tragamoneda extends MaquinaDeJuego{
         let numeroRandom = Math.random() * 3;
         return Math.round(numeroRandom);
     }
-
+    
     juego(casino : Casino) {
         if (casino.getSaldo()-this.apuesta >= 0) {
 
@@ -34,8 +35,8 @@ export class Tragamoneda extends MaquinaDeJuego{
 
 
             numero1 = this.numeroRandom();
-            numero2 = this.numeroRandom()
-            numero3 = this.numeroRandom()
+            numero2 = this.numeroRandom();
+            numero3 = this.numeroRandom();
             console.log(numero1, numero2, numero3);
 
             if (numero1 == numero2 && numero2 == numero3) {
@@ -50,10 +51,10 @@ export class Tragamoneda extends MaquinaDeJuego{
                  console.log(casino.saldo)
             }
         }else {
-            console.log("Saldo insuficiente")
+            console.log("Saldo insuficiente");
         }
     }
 
-
+    
 
 }

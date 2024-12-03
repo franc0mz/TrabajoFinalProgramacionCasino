@@ -7,8 +7,10 @@ import { Dado } from "./Dados";
 import { Tragamoneda2 } from "./Tragamonedas2";
 import { BlackJack } from "./BlackJack";
 import { Usuario } from "./Usuario";
+import { Instrucciones } from "./interfazInstrucciones";
 
-export class Menu {
+
+export class Menu implements Instrucciones{
   public nombre: string;
   public usuario:Usuario;
   public casino: Casino;
@@ -138,6 +140,7 @@ export class Menu {
     console.log(
       "--------------SALDO--------------------\n" +
         "1 - Saldo Actual\n" +
+        "1 - Saldo Actual\n" +
         "0 - Volver al menu principal\n" +
         "----------------------------------------"
     );
@@ -216,7 +219,7 @@ export class Menu {
         break;
       case 4:
         console.log("Opción 3: Modificar apuesta");
-        this.menuModificarApuesta(casino,MaquinaDeJuego, this.tragamoneda);
+        this.menuModificarApuesta(casino, this.tragamoneda);
         //  setTimeout(() => {
         //        this.menuTragamonedas(casino, tragamoneda)
         //    }, 2000)
@@ -242,7 +245,7 @@ export class Menu {
   }
   //poner menu de modificar apuestas dentro de jugar
 
-  menuModificarApuesta(casino: Casino, MaquinaDeJuego:MaquinaDeJuego, tragamoneda: Tragamoneda) {
+  menuModificarApuesta(casino: Casino, tragamoneda: Tragamoneda) {
     console.clear();
     console.log(
       "-----------MODIFICAR APUESTA------------\n" +

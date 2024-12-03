@@ -12,7 +12,7 @@ constructor(nombre:string){
 
 
 
-abstract setApuesta(apuesta:number):void;
+
 abstract juego(casino:Casino):void;
 
 numeroRandom(numLimite:number):number {
