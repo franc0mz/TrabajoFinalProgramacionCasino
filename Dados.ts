@@ -1,6 +1,6 @@
 import * as rls from "readline-sync";
 import { MaquinaDeJuego } from "./MaquinaDeJuego";
-import { Casino } from "./Casino";
+import { Usuario } from "./Usuario";
 import { interfaceApuesta } from "./InterfazApuesta";
 export class Dado extends MaquinaDeJuego implements interfaceApuesta {
   constructor(nombre: string) {
@@ -8,11 +8,11 @@ export class Dado extends MaquinaDeJuego implements interfaceApuesta {
     this.apuesta = 5;
   }
 
-  public juego(casino: Casino) {
+  public juego(usuario:Usuario) {
     let nuevaRonda: number = 0;
     let validador: boolean = false;
     this.setApuesta(this.apuesta);
-    if (casino.getSaldo() - this.apuesta <= 0) {
+    if  (usuario.getSaldo() - this.apuesta < 0 ) {
       console.log("No tienes suficiente saldo.");
       return;
     }
@@ -20,21 +20,21 @@ export class Dado extends MaquinaDeJuego implements interfaceApuesta {
     let suma = this.tirarDados();
 
     if (suma === 7 || suma === 11) {
-      casino.saldo += this.apuesta * 2;
-      console.log("¡Ganaste! Tu saldo acutal es: " + casino.getSaldo());
+      usuario.saldo += this.apuesta * 2;
+      console.log("¡Ganaste! Tu saldo acutal es: " + usuario.getSaldo());
     } else if (suma === 2 || suma === 3 || suma === 12) {
-      casino.saldo -= this.apuesta;
-      console.log("Perdiste. Tu saldo acutal es: " + casino.getSaldo());
+      usuario.saldo -= this.apuesta;
+      console.log("Perdiste. Tu saldo acutal es: " + usuario.getSaldo());
     } else {
       do {
         nuevaRonda = this.tirarDados();
         if (nuevaRonda === suma) {
-          casino.saldo += this.apuesta * 2;
-          console.log("¡Ganaste! Tu saldo acutal es: " + casino.getSaldo());
+          usuario.saldo += this.apuesta * 2;
+          console.log("¡Ganaste! Tu saldo acutal es: " + usuario.getSaldo());
           validador = true;
         } else if (nuevaRonda === 7) {
-          casino.saldo -= this.apuesta;
-          console.log("Perdiste. Tu saldo acutal es: " + casino.getSaldo());
+          usuario.saldo -= this.apuesta;
+          console.log("Perdiste. Tu saldo acutal es: " + usuario.getSaldo());
           validador = true;
         }
       } while (validador === false);
@@ -54,4 +54,5 @@ export class Dado extends MaquinaDeJuego implements interfaceApuesta {
     apuesta = rls.questionInt("Escriba cuanto desea apostar: ");
     this.apuesta = apuesta;
   }
+  
 }

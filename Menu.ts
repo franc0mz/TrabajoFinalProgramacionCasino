@@ -1,19 +1,16 @@
 import * as rls from "readline-sync";
 import { Tragamoneda } from "./Tragamoneda";
-import { Casino } from "./Casino";
+import { Usuario } from "./Usuario";
 import fs from "node:fs";
 import { MaquinaDeJuego } from "./MaquinaDeJuego";
 import { Dado } from "./Dados";
 import { Tragamoneda2 } from "./Tragamonedas2";
 import { BlackJack } from "./BlackJack";
-import { Usuario } from "./Usuario";
 import { Instrucciones } from "./interfazInstrucciones";
 
-
-export class Menu implements Instrucciones{
+export class Menu implements Instrucciones {
   public nombre: string;
-  public usuario:Usuario;
-  public casino: Casino;
+  public usuario: Usuario;
   public tragamoneda: Tragamoneda;
   public tragamoneda2: Tragamoneda;
   public dado: Dado;
@@ -23,16 +20,14 @@ export class Menu implements Instrucciones{
   public instruccionesDados: string;
   constructor(
     nombre: string,
-    usuario:Usuario,
-    casino: Casino,
+    usuario: Usuario,
     tragamoneda: Tragamoneda,
-    tragamoneda2:Tragamoneda2,
+    tragamoneda2: Tragamoneda2,
     dado: Dado,
-    blackJack:BlackJack
+    blackJack: BlackJack
   ) {
     this.nombre = nombre;
-    this.usuario=usuario;
-    this.casino = casino;
+    this.usuario = usuario;
     this.tragamoneda = tragamoneda;
     this.tragamoneda2 = tragamoneda2;
     this.dado = dado;
@@ -57,10 +52,21 @@ export class Menu implements Instrucciones{
     return console.log(mostrInstrTragamoneda.join(" "));
   }
 
-  menuPrincipal(casino: Casino, tragamoneda: Tragamoneda,tragamoneda2:Tragamoneda2, dado: Dado, blackJack:BlackJack) {
+  menuPrincipal(
+    usuario: Usuario,
+    tragamoneda: Tragamoneda,
+    tragamoneda2: Tragamoneda2,
+    dado: Dado,
+    blackJack: BlackJack
+  ) {
     console.clear();
-    if (this.usuario.getNombre()===""){
-    this.usuario.setNombre();}
+    if (this.usuario.getNombre() === "") {
+      this.usuario.setNombre();
+      do {
+        this.usuario.agregarSaldo()
+      } while (this.usuario.getSaldo()<100);
+    }
+    console.clear();
     console.log(
       `Bienvenido al Casino ${this.usuario.getNombre()}\n` +
         "----------------------------------------\n" +
@@ -76,26 +82,39 @@ export class Menu implements Instrucciones{
     switch (elegir) {
       case 1:
         console.log("Opción 1: Juegos");
-        this.menuJuegos(casino,  tragamoneda,tragamoneda2, dado, blackJack);
+        this.menuJuegos(usuario, tragamoneda, tragamoneda2, dado, blackJack);
         break;
       case 2:
         console.log("Opción 2: Saldo");
-        this.menuSaldo(casino, tragamoneda);
+        this.menuSaldo(usuario, tragamoneda);
         break;
       case 0:
-        console.log("Vuelva Pronto");
+        console.log(`Te retiras con : $ ${usuario.getSaldo()}`)
+        console.log(`Gracias por jugar con nosotros ${usuario.getNombre()}.\n¡Vuelva Pronto!`);
         setTimeout(() => {}, 2000);
         break;
       default:
         console.log("Opcion no válida. Por favor, elige entre 0 y 2.");
         setTimeout(() => {
-          this.menuPrincipal(casino, tragamoneda,tragamoneda2, dado,blackJack);
+          this.menuPrincipal(
+            usuario,
+            tragamoneda,
+            tragamoneda2,
+            dado,
+            blackJack
+          );
         }, 2000);
         break;
     }
   }
 
-  menuJuegos(casino: Casino, tragamoneda: Tragamoneda,tragamoneda2:Tragamoneda2, dado: Dado,blackJack:BlackJack) {
+  menuJuegos(
+    usuario: Usuario,
+    tragamoneda: Tragamoneda,
+    tragamoneda2: Tragamoneda2,
+    dado: Dado,
+    blackJack: BlackJack
+  ) {
     console.clear();
     console.log(
       "----------------JUEGOS-----------------\n" +
@@ -112,35 +131,35 @@ export class Menu implements Instrucciones{
     switch (elegir) {
       case 1:
         console.log("Opción 1: Tragamonedas");
-        this.menuTragamonedas(casino, tragamoneda);
+        this.menuTragamonedas(usuario, tragamoneda);
         break;
       case 2:
         console.log("Opción 2: BlackJack");
-        this.menuBlackJack(casino,blackJack)
+        this.menuBlackJack(usuario, blackJack);
         break;
       case 3:
         console.log("Opción 3: Dados");
-        this.menuDados(casino, dado);
+        this.menuDados(usuario, dado);
         break;
       case 4:
         console.log("Opción 0: Volver al menu principal");
-        this.menuPrincipal(casino, tragamoneda, tragamoneda2, dado,blackJack);
+        this.menuPrincipal(usuario, tragamoneda, tragamoneda2, dado, blackJack);
         break;
       default:
         console.log("Opción no válida. Por favor, elige entre 0 y 3.");
         setTimeout(() => {
-          this.menuJuegos(casino, tragamoneda,tragamoneda2, dado,blackJack);
+          this.menuJuegos(usuario, tragamoneda, tragamoneda2, dado, blackJack);
         }, 2000);
         break;
     }
   }
 
-  menuSaldo(casino: Casino, tragamoneda: Tragamoneda) {
+  menuSaldo(usuario: Usuario, tragamoneda: Tragamoneda) {
     console.clear();
     console.log(
       "--------------SALDO--------------------\n" +
         "1 - Saldo Actual\n" +
-        "1 - Saldo Actual\n" +
+        "2 - Agregar saldo\n" +
         "0 - Volver al menu principal\n" +
         "----------------------------------------"
     );
@@ -150,25 +169,41 @@ export class Menu implements Instrucciones{
     console.clear();
     switch (elegir) {
       case 1:
-        console.log(`Opción 1: Saldo Actual : ${casino.getSaldo()}`);
+        console.log(`Opción 1: Saldo Actual : ${usuario.getSaldo()}`);
         setTimeout(() => {
-          this.menuSaldo(casino, tragamoneda);
+          this.menuSaldo(usuario, tragamoneda);
+        }, 2000);
+        break;
+      case 2:
+        console.log(`Opción 2: Agregar Saldo`);
+        console.log(`Saldo Actual : ${usuario.getSaldo()}`)
+        usuario.agregarSaldo()
+        console.log(`Nuevo Saldo : ${usuario.getSaldo()}`)
+
+        setTimeout(() => {
+          this.menuSaldo(usuario, tragamoneda);
         }, 2000);
         break;
       case 0:
         console.log("Opción 0: Menu Principal");
-        this.menuPrincipal(casino, tragamoneda, this.tragamoneda2, this.dado,this.blackJack);
+        this.menuPrincipal(
+          usuario,
+          tragamoneda,
+          this.tragamoneda2,
+          this.dado,
+          this.blackJack
+        );
         break;
       default:
         console.log("Opción no válida. Por favor, elige entre 0 y 1");
         setTimeout(() => {
-          this.menuSaldo(casino, tragamoneda);
+          this.menuSaldo(usuario, tragamoneda);
         }, 2000);
         break;
     }
   }
 
-  menuTragamonedas(casino: Casino, MaquinaDeJuego: MaquinaDeJuego) {
+  menuTragamonedas(usuario: Usuario, MaquinaDeJuego: MaquinaDeJuego) {
     console.clear();
     console.log(
       "---------------TRAGAMONEDAS-------------\n" +
@@ -190,62 +225,68 @@ export class Menu implements Instrucciones{
         //Instrucciones()
         this.mostrarInstrucciones(this.instruccionesTragamonedas);
         setTimeout(() => {
-          this.menuTragamonedas(casino, MaquinaDeJuego);
+          this.menuTragamonedas(usuario, MaquinaDeJuego);
         }, 7000);
         break;
       case 2:
         console.log("Opción 2: Jugar Tragamonedas x3 Lineas");
         let elegir: number = 1;
         while (elegir === 1) {
-          this.tragamoneda.juego(casino);
+          this.tragamoneda.juego(usuario);
           elegir = rls.questionInt("Seguir jugando 1: \nVolver al menu 2: ");
           console.clear();
         }
 
-        this.menuTragamonedas(casino, MaquinaDeJuego);
+        this.menuTragamonedas(usuario, MaquinaDeJuego);
 
         break;
       case 3:
         console.log("Opción 2: Jugar Tragamonedas x5 Lineas");
         let elegir2 = 1;
         while (elegir2 === 1) {
-            this.tragamoneda2.juego(casino);
+          this.tragamoneda2.juego(usuario);
           elegir2 = rls.questionInt("Seguir jugando 1: \nVolver al menu 2: ");
           console.clear();
         }
 
-        this.menuTragamonedas(casino, MaquinaDeJuego);
+        this.menuTragamonedas(usuario, MaquinaDeJuego);
 
         break;
       case 4:
         console.log("Opción 3: Modificar apuesta");
-        this.menuModificarApuesta(casino, this.tragamoneda);
+        this.menuModificarApuesta(usuario, this.tragamoneda);
         //  setTimeout(() => {
-        //        this.menuTragamonedas(casino, tragamoneda)
+        //        this.menuTragamonedas(usuario, tragamoneda)
         //    }, 2000)
         break;
       case 5:
         //saldoActual()
-        console.log(`Opción 4: Saldo Actual : ${casino.getSaldo()}`);
+        console.log(`Opción 4: Saldo Actual : ${usuario.getSaldo()}`);
         setTimeout(() => {
-          this.menuTragamonedas(casino, this.tragamoneda);
+          this.menuTragamonedas(usuario, this.tragamoneda);
         }, 2000);
         break;
       case 0:
         console.log("Opción 0: Volver al menu principal");
-        this.menuPrincipal(casino, this.tragamoneda,this.tragamoneda2, this.dado, this.blackJack);
+        this.menuPrincipal(
+          usuario,
+          this.tragamoneda,
+          this.tragamoneda2,
+          this.dado,
+          this.blackJack
+        );
         break;
       default:
         console.log("Opción no válida. Por favor, elige entre 1 y 4.");
         setTimeout(() => {
-          this.menuTragamonedas(casino, this.tragamoneda);
+          this.menuTragamonedas(usuario, this.tragamoneda);
         }, 2000);
         break;
     }
   }
   //poner menu de modificar apuestas dentro de jugar
 
-  menuModificarApuesta(casino: Casino, tragamoneda: Tragamoneda) {
+  menuModificarApuesta(usuario: Usuario, tragamoneda: Tragamoneda) {
     console.clear();
     console.log(
       "-----------MODIFICAR APUESTA------------\n" +
@@ -264,9 +305,9 @@ export class Menu implements Instrucciones{
         console.log("Opción 1: Valor de la apuesta 5");
         tragamoneda.setApuesta(5);
         this.tragamoneda2.setApuesta(5);
-        
+
         setTimeout(() => {
-          this.menuTragamonedas(casino, tragamoneda);
+          this.menuTragamonedas(usuario, tragamoneda);
         }, 2000);
         break;
 
@@ -277,7 +318,7 @@ export class Menu implements Instrucciones{
         this.tragamoneda2.setApuesta(10);
         this.tragamoneda2.setMuliplicador(3);
         setTimeout(() => {
-          this.menuTragamonedas(casino, tragamoneda);
+          this.menuTragamonedas(usuario, tragamoneda);
         }, 2000);
         break;
 
@@ -288,24 +329,30 @@ export class Menu implements Instrucciones{
         this.tragamoneda2.setApuesta(12);
         this.tragamoneda2.setMuliplicador(4);
         setTimeout(() => {
-          this.menuTragamonedas(casino, tragamoneda);
+          this.menuTragamonedas(usuario, tragamoneda);
         }, 2000);
         break;
 
       case 0:
         console.log("Opción 0: Volver al menu principal");
-        this.menuPrincipal(casino, tragamoneda,this.tragamoneda2, this.dado,this.blackJack);
+        this.menuPrincipal(
+          usuario,
+          tragamoneda,
+          this.tragamoneda2,
+          this.dado,
+          this.blackJack
+        );
         break;
       default:
         console.log("Opción no válida. Por favor, elige entre 0 y 3.");
         setTimeout(() => {
-          this.menuTragamonedas(casino, tragamoneda);
+          this.menuTragamonedas(usuario, tragamoneda);
         }, 2000);
         break;
     }
   }
 
-  menuDados(casino: Casino, MaquinaDeJuego: MaquinaDeJuego) {
+  menuDados(usuario: Usuario, MaquinaDeJuego: MaquinaDeJuego) {
     console.clear();
     console.log(
       "-----------------DADOS------------------\n" +
@@ -325,42 +372,48 @@ export class Menu implements Instrucciones{
         //Instrucciones()
         this.mostrarInstrucciones(this.instruccionesDados);
         setTimeout(() => {
-          this.menuDados(casino, MaquinaDeJuego);
+          this.menuDados(usuario, MaquinaDeJuego);
         }, 7000);
         break;
       case 2:
         console.log("Opción 2: Jugar");
         let elegir: number = 1;
         while (elegir === 1) {
-          this.dado.juego(casino);
+          this.dado.juego(usuario);
           elegir = rls.questionInt("Seguir jugando 1: \nVolver al menu 2: ");
           console.clear();
         }
 
-        this.menuDados(casino, MaquinaDeJuego);
+        this.menuDados(usuario, MaquinaDeJuego);
 
         break;
       case 3:
         //saldoActual()
-        console.log(`Opción 4: Saldo Actual : ${casino.getSaldo()}`);
+        console.log(`Opción 4: Saldo Actual : ${usuario.getSaldo()}`);
         setTimeout(() => {
-          this.menuDados(casino, this.tragamoneda);
+          this.menuDados(usuario, this.tragamoneda);
         }, 2000);
         break;
       case 0:
         console.log("Opción 0: Volver al menu principal");
-        this.menuPrincipal(casino, this.tragamoneda,this.tragamoneda2, this.dado, this.blackJack);
+        this.menuPrincipal(
+          usuario,
+          this.tragamoneda,
+          this.tragamoneda2,
+          this.dado,
+          this.blackJack
+        );
         break;
       default:
         console.log("Opción no válida. Por favor, elige entre 1 y 3.");
         setTimeout(() => {
-          this.menuDados(casino, this.tragamoneda);
+          this.menuDados(usuario, this.tragamoneda);
         }, 2000);
         break;
     }
   }
 
-  menuBlackJack(casino: Casino, MaquinaDeJuego: MaquinaDeJuego) {
+  menuBlackJack(usuario: Usuario, MaquinaDeJuego: MaquinaDeJuego) {
     console.clear();
     console.log(
       "-----------------BlackJack------------------\n" +
@@ -380,36 +433,42 @@ export class Menu implements Instrucciones{
         //Instrucciones()
         this.mostrarInstrucciones(this.instruccionesBlackjack);
         setTimeout(() => {
-          this.menuBlackJack(casino, MaquinaDeJuego);
+          this.menuBlackJack(usuario, MaquinaDeJuego);
         }, 7000);
         break;
       case 2:
         console.log("Opción 2: Jugar");
         let elegir: number = 1;
         while (elegir === 1) {
-          this.blackJack.juego(casino);
+          this.blackJack.juego(usuario);
           elegir = rls.questionInt("Seguir jugando 1: \nVolver al menu 2: ");
           console.clear();
         }
 
-        this.menuBlackJack(casino, MaquinaDeJuego);
+        this.menuBlackJack(usuario, MaquinaDeJuego);
 
         break;
       case 3:
         //saldoActual()
-        console.log(`Opción 4: Saldo Actual : ${casino.getSaldo()}`);
+        console.log(`Opción 4: Saldo Actual : ${usuario.getSaldo()}`);
         setTimeout(() => {
-          this.menuBlackJack(casino, this.tragamoneda);
+          this.menuBlackJack(usuario, this.tragamoneda);
         }, 2000);
         break;
       case 0:
         console.log("Opción 0: Volver al menu principal");
-        this.menuPrincipal(casino, this.tragamoneda,this.tragamoneda2, this.dado, this.blackJack);
+        this.menuPrincipal(
+          usuario,
+          this.tragamoneda,
+          this.tragamoneda2,
+          this.dado,
+          this.blackJack
+        );
         break;
       default:
         console.log("Opción no válida. Por favor, elige entre 1 y 3.");
         setTimeout(() => {
-          this.menuBlackJack(casino, this.tragamoneda);
+          this.menuBlackJack(usuario, this.tragamoneda);
         }, 2000);
         break;
     }

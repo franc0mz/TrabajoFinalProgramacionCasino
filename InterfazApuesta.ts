@@ -1,4 +1,4 @@
 export interface interfaceApuesta {
-    apuesta:number;
-    setApuesta(apuesta:number):void;
+  apuesta: number;
+  setApuesta(apuesta: number): void;
 }

@@ -1,12 +1,7 @@
-export interface Instrucciones{
+export interface Instrucciones {
+  instruccionesTragamonedas: string;
+  instruccionesBlackjack: string;
+  instruccionesDados: string;
 
-    instruccionesTragamonedas: string;
-    instruccionesBlackjack: string;
-    instruccionesDados: string;
- 
-    mostrarInstrucciones(instrucciones: string):void;
-    }
-   
-
-      
-
+  mostrarInstrucciones(instrucciones: string): void;
+}
