@@ -5,8 +5,8 @@ export class Sesion {
    
    
    
-   constructor(saldo?:number){
-       this.saldo=1000;
+   constructor(saldo:number = 1000){
+       this.saldo=saldo;
    }
    
    
@@ -28,5 +28,6 @@ export class Sesion {
    
    }
    
-   let sesion1 = new Sesion (10000) ;
-   console.log (sesion1.saldo)
+let sesion1 = new Sesion(10000);
+sesion1.mostrarSaldo(); // ACA MOSTRAMOS EL SALDO USANDO EL METODO QUE SE CREO
+   //console.log (sesion1.saldo)

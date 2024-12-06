@@ -9,8 +9,8 @@ export class Tragamoneda extends MaquinaDeJuego{
     public multiplicador:number;
     constructor(nombre: string) {
         super(nombre)  
-        this.apuesta= 5;
-        this.multiplicador= 2;
+        this.apuesta= 5; //apuesta predeterminada
+        this.multiplicador= 2; //multiplicador predeterminado
     }
 
     
@@ -20,22 +20,24 @@ export class Tragamoneda extends MaquinaDeJuego{
     public setMuliplicador(multiplicador:number){
         this.multiplicador=multiplicador;
     }
+
+   
     numeroRandom() {
         let numeroRandom = Math.random() * 3;
         return Math.round(numeroRandom);
     }
 
     juego(casino : Casino) {
-        if (casino.getSaldo()-this.apuesta >= 0) {
+        if (casino.getSaldo()-this.apuesta >= 0) { //modifique esto
 
-            let numero1: number;
-            let numero2: number;
-            let numero3: number;
+            let numero1: number = this.numeroRandom();
+            let numero2: number = this.numeroRandom();
+            let numero3: number = this.numeroRandom();
 
 
-            numero1 = this.numeroRandom();
-            numero2 = this.numeroRandom()
-            numero3 = this.numeroRandom()
+            //numero1 = this.numeroRandom();
+            //numero2 = this.numeroRandom()
+            //numero3 = this.numeroRandom()
             console.log(numero1, numero2, numero3);
 
             if (numero1 == numero2 && numero2 == numero3) {

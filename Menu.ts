@@ -2,16 +2,17 @@ import * as rls from 'readline-sync';
 import { Tragamoneda } from "./Tragamoneda";
 import { Casino } from "./Casino";
 import { Blackjack } from "./Blackjack";
-import fs from "node:fs";
+import * as fs from "node:fs"; //le agregue * as
 import { MaquinaDeJuego } from "./MaquinaDeJuego";
 import { Dado } from "./Dados";
 import { Tragamoneda2 } from "./Tragamonedas2";
+
 
 export class Menu {
   public nombre: string;
   public casino: Casino;
   public tragamoneda: Tragamoneda;
-  public tragamoneda2: Tragamoneda;
+  public tragamoneda2: Tragamoneda2;
   public blackjack: Blackjack;
   public dado: Dado;
   public instruccionesTragamonedas: string;
@@ -190,17 +191,18 @@ export class Menu {
           this.tragamoneda.juego(casino);
           elegir = rls.questionInt("1) Seguir jugando, 2) Volver al menu: ");
           console.clear();
+         
         }
-
+        
         this.menuTragamonedas(casino, MaquinaDeJuego);
 
         break;
       case 3:
-        console.log("Opción 2: Jugar Tragamonedas x5 Lineas");
-        let elegir2 = 1;
+        console.log("Opción 3: Jugar Tragamonedas x5 Lineas");
+        let elegir2: number = 1
         while (elegir2 === 1) {
-            this.tragamoneda2.juego(casino);
-            elegir = rls.questionInt("1) Seguir jugando, 2) Volver al menu: ");
+          this.tragamoneda2.juego(casino);
+          elegir2 = rls.questionInt("1) Seguir jugando, 2) Volver al menu: ");
           console.clear();
         }
 
@@ -208,7 +210,7 @@ export class Menu {
 
         break;
       case 4:
-        console.log("Opción 3: Modificar apuesta");
+        console.log("Opción 4: Modificar apuesta");
         this.menuModificarApuesta(casino,MaquinaDeJuego, this.tragamoneda);
         //  setTimeout(() => {
         //        this.menuTragamonedas(casino, tragamoneda)
@@ -216,7 +218,7 @@ export class Menu {
         break;
       case 5:
         //saldoActual()
-        console.log(`Opción 4: Saldo Actual : ${casino.getSaldo()}`);
+        console.log(`Opción 5: Saldo Actual : ${casino.getSaldo()}`);
         setTimeout(() => {
           this.menuTragamonedas(casino, this.tragamoneda);
         }, 2000);
@@ -242,7 +244,7 @@ export class Menu {
         "1 - Valor de la apuesta 5\n" +
         "2 - Valor de la apuesta 10\n" +
         "3 - Valor de la apuesta 12\n" +
-        "0 - Volver al menu principal\n" +
+        "0 - Volver al menu\n" +
         "----------------------------------------"
     );
     let elegir: number = rls.questionInt(
@@ -283,13 +285,13 @@ export class Menu {
         break;
 
       case 0:
-        console.log("Opción 0: Volver al menu principal");
-        this.menuPrincipal(casino, tragamoneda,this.tragamoneda2, this.blackjack, this.dado);
+        console.log("Opción 0: Volver al menu");
+        this.menuTragamonedas(casino, tragamoneda); //this.tragamoneda2, this.blackjack, this.dado);
         break;
       default:
         console.log("Opción no válida. Por favor, elige entre 0 y 3.");
         setTimeout(() => {
-          this.menuTragamonedas(casino, tragamoneda);
+          this.menuModificarApuesta(casino, MaquinaDeJuego, tragamoneda);
         }, 2000);
         break;
     }
