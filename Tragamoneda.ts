@@ -24,6 +24,7 @@ export class Tragamoneda extends MaquinaDeJuego implements interfaceApuesta {
   }
 
   juego(usuario: Usuario) {
+    let mostrarApuesta:number=0;
     if (usuario.getSaldo() - this.apuesta >= 0) {
       let numero1: number;
       let numero2: number;
@@ -35,13 +36,13 @@ export class Tragamoneda extends MaquinaDeJuego implements interfaceApuesta {
       console.log(numero1, numero2, numero3);
 
       if (numero1 == numero2 && numero2 == numero3) {
-        console.log("GANASTE");
+        mostrarApuesta= this.apuesta * this.multiplicador;
         usuario.setSaldo(usuario.saldo + this.apuesta * this.multiplicador);
-        console.log(usuario.saldo);
+        console.log(`¡Ganaste: $${mostrarApuesta}! Tu saldo acutal es:  $${usuario.getSaldo()}`);
       } else {
-        console.log("QUE MALA SUERTE, INTENTA DE NUEVO");
         usuario.setSaldo(usuario.saldo - this.apuesta);
-        console.log(usuario.saldo);
+        mostrarApuesta= this.apuesta;
+          console.log(`¡Perdiste: $${mostrarApuesta}! Tu saldo acutal es:  $${usuario.getSaldo()}`);
       }
     } else {
       console.log("Saldo insuficiente");

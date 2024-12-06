@@ -25,6 +25,7 @@ export class Tragamoneda2 extends MaquinaDeJuego implements interfaceApuesta {
   }
 
   juego(usuario: Usuario) {
+    let mostrarApuesta:number=0;
     if (usuario.getSaldo() - this.apuesta >= 0) {
       let numero1: number;
       let numero2: number;
@@ -45,22 +46,22 @@ export class Tragamoneda2 extends MaquinaDeJuego implements interfaceApuesta {
         numero1 == numero3 &&
         numero1 == numero4 &&
         numero1 == numero5
-      ) {
-        console.log("GANASTE QUINTUPLE NUMERO");
+      ) { 
+        mostrarApuesta= this.apuesta * this.multiplicador * 2;
         usuario.setSaldo(usuario.saldo + this.apuesta * this.multiplicador * 2);
-        console.log(usuario.saldo);
+        console.log(`¡GANASTE QUINTUPLE NUMERO: $${mostrarApuesta}! Tu saldo acutal es:  $${usuario.getSaldo()}`);
       } else if (
         (numero1 == numero2 && numero1 == numero3) ||
         (numero2 == numero3 && numero2 == numero4) ||
         (numero3 == numero4 && numero3 == numero5)
       ) {
-        console.log("GANASTE TRIPLE NUMERO");
+        mostrarApuesta= this.apuesta * this.multiplicador
         usuario.setSaldo(usuario.saldo + this.apuesta * this.multiplicador);
-        console.log(usuario.saldo);
+        console.log(`¡GANASTE TRIPLE NUMERO: $${mostrarApuesta}! Tu saldo acutal es:  $${usuario.getSaldo()}`);
       } else {
-        console.log("QUE MALA SUERTE, INTENTA DE NUEVO");
         usuario.setSaldo(usuario.saldo - this.apuesta);
-        console.log(usuario.saldo);
+        mostrarApuesta= this.apuesta;
+        console.log(`¡Perdiste: $${mostrarApuesta}! Tu saldo acutal es:  $${usuario.getSaldo()}`);
       }
     } else {
       console.log("Saldo insuficiente");

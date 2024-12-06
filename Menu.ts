@@ -141,7 +141,7 @@ export class Menu implements Instrucciones {
         console.log("Opción 3: Dados");
         this.menuDados(usuario, dado);
         break;
-      case 4:
+      case 0:
         console.log("Opción 0: Volver al menu principal");
         this.menuPrincipal(usuario, tragamoneda, tragamoneda2, dado, blackJack);
         break;

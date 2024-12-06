@@ -14,6 +14,7 @@ export class BlackJack extends MaquinaDeJuego implements interfaceApuesta {
   }
 
   juego(usuario: Usuario) {
+    let mostrarApuesta:number=0;
     console.log("Tu saldo acutal es: " + usuario.getSaldo());
     this.setApuesta(this.apuesta);
     if (this.apuesta < 100) {
@@ -46,10 +47,9 @@ export class BlackJack extends MaquinaDeJuego implements interfaceApuesta {
         }
       } else {
         usuario.saldo -= this.apuesta;
-        console.log(
-          "Te pasaste de 21, Perdiste. Tu saldo acutal es: " +
-            usuario.getSaldo()
-        );
+        mostrarApuesta= this.apuesta;
+        console.log(`¡Te pasaste de 21, Perdiste: $${mostrarApuesta}! Tu saldo acutal es:  $${usuario.getSaldo()}`);
+       
       }
     } while (continuar === 1 && cartasUsuario <= 21);
 
@@ -62,16 +62,19 @@ export class BlackJack extends MaquinaDeJuego implements interfaceApuesta {
         );
         if (cartasCasino > 21) {
           usuario.saldo += this.apuesta * 2;
-          console.log("¡Ganaste! Tu saldo acutal es: " + usuario.getSaldo());
+          mostrarApuesta= this.apuesta * 2;
+          console.log(`¡Ganaste: $${mostrarApuesta}! Tu saldo acutal es:  $${usuario.getSaldo()}`);
         } else if (cartasCasino == 21 && cartasUsuario < 21) {
           usuario.saldo -= this.apuesta;
-          console.log("Perdiste. Tu saldo acutal es: " + usuario.getSaldo());
+          mostrarApuesta= this.apuesta;
+          console.log(`¡Perdiste: $${mostrarApuesta}! Tu saldo acutal es:  $${usuario.getSaldo()}`);
         } else if (cartasCasino == cartasUsuario && cartasCasino >= 17) {
           console.log("Empate");
           //recuperar apuesta
         } else if (cartasCasino < 21 && cartasCasino > cartasUsuario) {
           usuario.saldo -= this.apuesta;
-          console.log("Perdiste. Tu saldo acutal es: " + usuario.getSaldo());
+          mostrarApuesta= this.apuesta;
+          console.log(`¡Perdiste: $${mostrarApuesta}! Tu saldo acutal es:  $${usuario.getSaldo()}`);
         }
       } while (cartasCasino < 17 && cartasUsuario >= cartasCasino);
     }
