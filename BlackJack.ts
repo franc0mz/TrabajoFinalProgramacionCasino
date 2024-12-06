@@ -68,15 +68,15 @@ export class BlackJack extends MaquinaDeJuego implements interfaceApuesta {
           usuario.saldo -= this.apuesta;
           mostrarApuesta= this.apuesta;
           console.log(`¡Perdiste: $${mostrarApuesta}! Tu saldo acutal es:  $${usuario.getSaldo()}`);
-        } else if (cartasCasino == cartasUsuario && cartasCasino >= 17) {
+        } else if (cartasCasino == cartasUsuario && cartasCasino >= 21) {
           console.log("Empate");
           //recuperar apuesta
         } else if (cartasCasino < 21 && cartasCasino > cartasUsuario) {
           usuario.saldo -= this.apuesta;
           mostrarApuesta= this.apuesta;
           console.log(`¡Perdiste: $${mostrarApuesta}! Tu saldo acutal es:  $${usuario.getSaldo()}`);
-        }
-      } while (cartasCasino < 17 && cartasUsuario >= cartasCasino);
+        } 
+      } while (cartasCasino < 21 && cartasUsuario >= cartasCasino);
     }
   }
 

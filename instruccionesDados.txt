@@ -1,1 +1,6 @@
-Para comenzar el juego, durante lo que se conoce como «tiro de salida», el jugador necesita realizar una apuesta que se conoce como «línea de pase», en la que se busca obtener un siete (conocido como «siete natural» o «siete ganador») o un once en la combinación de dados para ganar la apuesta, que paga uno a uno. Si por el contrario obtiene un dos, tres o doce (números conocidos como «craps») pierde automáticamente su apuesta y necesitará colocar de nuevo una apuesta para seguir tirando. Si durante el primer lanzamiento no obtiene un siete u once (con que gana), o un dos, tres o doce (con que pierde), el juego entrará en una segunda etapa, en la que se marcará el «punto» en el número que se obtenga en dicho lanzamiento (cuatro, cinco, seis, ocho, nueve o diez). En esta etapa, el tirador buscará volver a obtener ese número en los dados, con lo que ganará el «roll» o «ronda», antes de obtener un siete, llamado «siete fuera» o «seven out». Si logra repetir el número del punto, el jugador ganará su apuesta y se le pagará uno a uno el monto. Si por el contrario si aparece un siete, perderá su apuesta. En ambos casos se considera que la ronda ha terminado y el juego vuelve a comenzar
+Tiro de salida:
+[Ganas] con 7 u 11. [Pierdes] con 2, 3 o 12.
+Cualquier otro número (4, 5, 6, 8, 9, o 10) se convierte en el punto.
+Fase del punto:
+[Ganas] si repites el número del punto antes de sacar un 7.
+[Pierdes] si sacas un 7 antes del punto.

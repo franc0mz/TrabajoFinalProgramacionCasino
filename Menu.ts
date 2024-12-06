@@ -1,7 +1,7 @@
 import * as rls from "readline-sync";
 import { Tragamoneda } from "./Tragamoneda";
 import { Usuario } from "./Usuario";
-import fs from "node:fs";
+import * as fs from "node:fs";
 import { MaquinaDeJuego } from "./MaquinaDeJuego";
 import { Dado } from "./Dados";
 import { Tragamoneda2 } from "./Tragamonedas2";
@@ -72,7 +72,7 @@ export class Menu implements Instrucciones {
         "----------------------------------------\n" +
         "1 - Juegos\n" +
         "2 - Saldo\n" +
-        "0 - Salir\n" +
+        "0 - Salir y Retirar saldo\n" +
         "----------------------------------------"
     );
     let elegir: number = rls.questionInt(
@@ -241,7 +241,7 @@ export class Menu implements Instrucciones {
 
         break;
       case 3:
-        console.log("Opción 2: Jugar Tragamonedas x5 Lineas");
+        console.log("Opción 3: Jugar Tragamonedas x5 Lineas");
         let elegir2 = 1;
         while (elegir2 === 1) {
           this.tragamoneda2.juego(usuario);
@@ -253,7 +253,7 @@ export class Menu implements Instrucciones {
 
         break;
       case 4:
-        console.log("Opción 3: Modificar apuesta");
+        console.log("Opción 4: Modificar apuesta");
         this.menuModificarApuesta(usuario, this.tragamoneda);
         //  setTimeout(() => {
         //        this.menuTragamonedas(usuario, tragamoneda)
@@ -261,7 +261,7 @@ export class Menu implements Instrucciones {
         break;
       case 5:
         //saldoActual()
-        console.log(`Opción 4: Saldo Actual : ${usuario.getSaldo()}`);
+        console.log(`Opción 5: Saldo Actual : ${usuario.getSaldo()}`);
         setTimeout(() => {
           this.menuTragamonedas(usuario, this.tragamoneda);
         }, 2000);
@@ -291,9 +291,9 @@ export class Menu implements Instrucciones {
     console.log(
       "-----------MODIFICAR APUESTA------------\n" +
         "1 - Valor de la apuesta 5\n" +
-        "2 - Valor de la apuesta 10\n" +
-        "3 - Valor de la apuesta 12\n" +
-        "0 - Volver al menu principal\n" +
+        "2 - Valor de la apuesta 10 y el multiplicador es 3\n" +
+        "3 - Valor de la apuesta 12 y el multiplicador es 4\n" +
+        "0 - Volver al menu Tragamonedas\n" +
         "----------------------------------------"
     );
     let elegir: number = rls.questionInt(
@@ -312,7 +312,7 @@ export class Menu implements Instrucciones {
         break;
 
       case 2:
-        console.log("Opción 2: Valor de la apuesta ahora es 10");
+        console.log("Opción 2: Valor de la apuesta ahora es 10 y el multiplicador es 3");
         tragamoneda.setApuesta(10);
         tragamoneda.setMuliplicador(3);
         this.tragamoneda2.setApuesta(10);
@@ -323,7 +323,7 @@ export class Menu implements Instrucciones {
         break;
 
       case 3:
-        console.log("Opción 3: Valor de la apuesta 12");
+        console.log("Opción 3: Valor de la apuesta 12 y el multiplicador es 4");
         tragamoneda.setApuesta(12);
         tragamoneda.setMuliplicador(4);
         this.tragamoneda2.setApuesta(12);
@@ -335,18 +335,18 @@ export class Menu implements Instrucciones {
 
       case 0:
         console.log("Opción 0: Volver al menu principal");
-        this.menuPrincipal(
+        this.menuTragamonedas(
           usuario,
           tragamoneda,
-          this.tragamoneda2,
+          /*this.tragamoneda2,
           this.dado,
-          this.blackJack
+          this.blackJack*/
         );
         break;
       default:
         console.log("Opción no válida. Por favor, elige entre 0 y 3.");
         setTimeout(() => {
-          this.menuTragamonedas(usuario, tragamoneda);
+          this.menuModificarApuesta(usuario, tragamoneda);
         }, 2000);
         break;
     }
@@ -389,7 +389,7 @@ export class Menu implements Instrucciones {
         break;
       case 3:
         //saldoActual()
-        console.log(`Opción 4: Saldo Actual : ${usuario.getSaldo()}`);
+        console.log(`Opción 3: Saldo Actual : ${usuario.getSaldo()}`);
         setTimeout(() => {
           this.menuDados(usuario, this.tragamoneda);
         }, 2000);

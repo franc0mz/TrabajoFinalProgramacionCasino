@@ -13,11 +13,14 @@ export class Dado extends MaquinaDeJuego implements interfaceApuesta {
     let validador: boolean = false;
     let mostrarApuesta:number=0;
     this.setApuesta(this.apuesta);
-    if  (usuario.getSaldo() - this.apuesta < 0 ) {
+    if (this.apuesta < 100) {
+      console.log("Apuesta minima es 100");
+      return;
+    } else if (usuario.getSaldo() - this.apuesta < 0) {
       console.log("No tienes suficiente saldo.");
       return;
     }
-
+    
     let suma = this.tirarDados();
 
     if (suma === 7 || suma === 11) {
