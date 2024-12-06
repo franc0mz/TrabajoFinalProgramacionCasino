@@ -31,11 +31,7 @@ export class BlackJack extends MaquinaDeJuego implements interfaceApuesta {
     console.log("Casino: ");
     let cartasCasino = this.tirarCarta();
 
-    /*console.log("Usuario: ")
-    cartasUsuario += this.tirarCarta();  
-    console.log("Total Actual Usuario: " + cartasUsuario)*/
-
-    let continuar: number = 0; //rls.questionInt("Quiere tirar otra carta? 1-Si 2-NO ");
+    let continuar: number = 0;
     do {
       console.log("Usuario: ");
       cartasUsuario += this.tirarCarta();
@@ -70,7 +66,6 @@ export class BlackJack extends MaquinaDeJuego implements interfaceApuesta {
           console.log(`¡Perdiste: $${mostrarApuesta}! Tu saldo acutal es:  $${usuario.getSaldo()}`);
         } else if (cartasCasino == cartasUsuario && cartasCasino >= 21) {
           console.log("Empate");
-          //recuperar apuesta
         } else if (cartasCasino < 21 && cartasCasino > cartasUsuario) {
           usuario.saldo -= this.apuesta;
           mostrarApuesta= this.apuesta;

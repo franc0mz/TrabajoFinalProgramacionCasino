@@ -53,7 +53,6 @@ export class Dado extends MaquinaDeJuego implements interfaceApuesta {
     let dado1 = this.numeroRandom(5) + 1;
     let dado2 = this.numeroRandom(5) + 1;
     let suma = dado1 + dado2;
-    //Probar si lo retorna sin el return
     console.log(`Tiraste un ${dado1} y un ${dado2} (Total: ${suma})`);
     return suma;
   }

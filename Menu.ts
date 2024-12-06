@@ -222,7 +222,6 @@ export class Menu implements Instrucciones {
     switch (elegir) {
       case 1:
         console.log("Opción 1: Instrucciones");
-        //Instrucciones()
         this.mostrarInstrucciones(this.instruccionesTragamonedas);
         setTimeout(() => {
           this.menuTragamonedas(usuario, MaquinaDeJuego);
@@ -255,12 +254,8 @@ export class Menu implements Instrucciones {
       case 4:
         console.log("Opción 4: Modificar apuesta");
         this.menuModificarApuesta(usuario, this.tragamoneda);
-        //  setTimeout(() => {
-        //        this.menuTragamonedas(usuario, tragamoneda)
-        //    }, 2000)
         break;
       case 5:
-        //saldoActual()
         console.log(`Opción 5: Saldo Actual : ${usuario.getSaldo()}`);
         setTimeout(() => {
           this.menuTragamonedas(usuario, this.tragamoneda);
@@ -284,7 +279,6 @@ export class Menu implements Instrucciones {
         break;
     }
   }
-  //poner menu de modificar apuestas dentro de jugar
 
   menuModificarApuesta(usuario: Usuario, tragamoneda: Tragamoneda) {
     console.clear();
@@ -338,9 +332,6 @@ export class Menu implements Instrucciones {
         this.menuTragamonedas(
           usuario,
           tragamoneda,
-          /*this.tragamoneda2,
-          this.dado,
-          this.blackJack*/
         );
         break;
       default:
@@ -369,7 +360,6 @@ export class Menu implements Instrucciones {
     switch (elegir) {
       case 1:
         console.log("Opción 1: Instrucciones");
-        //Instrucciones()
         this.mostrarInstrucciones(this.instruccionesDados);
         setTimeout(() => {
           this.menuDados(usuario, MaquinaDeJuego);
@@ -388,7 +378,6 @@ export class Menu implements Instrucciones {
 
         break;
       case 3:
-        //saldoActual()
         console.log(`Opción 3: Saldo Actual : ${usuario.getSaldo()}`);
         setTimeout(() => {
           this.menuDados(usuario, this.tragamoneda);
@@ -430,7 +419,6 @@ export class Menu implements Instrucciones {
     switch (elegir) {
       case 1:
         console.log("Opción 1: Instrucciones");
-        //Instrucciones()
         this.mostrarInstrucciones(this.instruccionesBlackjack);
         setTimeout(() => {
           this.menuBlackJack(usuario, MaquinaDeJuego);
@@ -449,7 +437,6 @@ export class Menu implements Instrucciones {
 
         break;
       case 3:
-        //saldoActual()
         console.log(`Opción 4: Saldo Actual : ${usuario.getSaldo()}`);
         setTimeout(() => {
           this.menuBlackJack(usuario, this.tragamoneda);
