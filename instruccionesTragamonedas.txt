@@ -1,0 +1,3 @@
+Tragamonedas Se hace una apuesta.
+Los numeros se detienen formando combinaciones aleatorias. 
+Si hay numeros iguales dentro de una línea de pago, se gana.

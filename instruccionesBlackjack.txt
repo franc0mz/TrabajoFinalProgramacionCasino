@@ -1,0 +1,5 @@
+Blackjack, también llamado veintiuno,
+reparten dos cartas con la opcion de
+pedir si lo desea el usuario otra carta,
+que consiste en sumar un valor lo más
+próximo a 21 pero sin pasarse. 
