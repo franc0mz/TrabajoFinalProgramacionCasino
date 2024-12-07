@@ -14,4 +14,11 @@ Juegos:
 *Blackjack
 *Dados
 
+Prueba escritorio
+https://docs.google.com/spreadsheets/d/11pB0gHcJmxCtBrY7azWwqgBPPQNwTemp4bbDg77aZ9k/edit?gid=0#gid=0
 
+Trello
+https://trello.com/b/HB1VUr6m/casino-trabajo-final-programacion
+
+Grafico UML
+https://drive.google.com/file/d/1w8GhW12ttjtVFFfAn_Iga70r3Jioklhj/view
