@@ -70,9 +70,9 @@ export class Menu implements Instrucciones {
     console.log(
       `Bienvenido al Casino ${this.usuario.getNombre()}\n` +
         "----------------------------------------\n" +
-        "1 - Juegos\n" +
-        "2 - Saldo\n" +
-        "0 - Salir y Retirar saldo\n" +
+        "1 - ​Juegos 🧩​\n" +
+        "2 - Saldo 💲​\n" +
+        "0 - Salir y Retirar saldo 💰\n" +
         "----------------------------------------"
     );
     let elegir: number = rls.questionInt(
@@ -81,20 +81,20 @@ export class Menu implements Instrucciones {
     console.clear();
     switch (elegir) {
       case 1:
-        console.log("Opción 1: Juegos");
+        console.log("Opción 1: Juegos 🧩");
         this.menuJuegos(usuario, tragamoneda, tragamoneda2, dado, blackJack);
         break;
       case 2:
-        console.log("Opción 2: Saldo");
+        console.log("Opción 2: Saldo 💲");
         this.menuSaldo(usuario, tragamoneda);
         break;
       case 0:
         console.log(`Te retiras con : $ ${usuario.getSaldo()}`)
-        console.log(`Gracias por jugar con nosotros ${usuario.getNombre()}.\n¡Vuelva Pronto!`);
+        console.log(`Gracias por jugar con nosotros 👍 ${usuario.getNombre()}.\n¡Vuelva Pronto!👋​`);
         setTimeout(() => {}, 2000);
         break;
       default:
-        console.log("Opcion no válida. Por favor, elige entre 0 y 2.");
+        console.log("❌ ​Opcion no válida. Por favor, elige entre 0 y 2.");
         setTimeout(() => {
           this.menuPrincipal(
             usuario,
@@ -117,11 +117,11 @@ export class Menu implements Instrucciones {
   ) {
     console.clear();
     console.log(
-      "----------------JUEGOS-----------------\n" +
-        "1 - Tragamonedas\n" +
-        "2 - Blackjack\n" +
-        "3 - Dados\n" +
-        "0 - Volver al menu principal\n" +
+      "----------------🧩 JUEGOS 🧩-----------------\n" +
+        "1 - Tragamonedas 🎰\n" +
+        "2 - Blackjack 🃏​\n" +
+        "3 - Dados 🎲​\n" +
+        "0 - ​Volver al menu principal ⬅️​​​\n" +
         "----------------------------------------"
     );
     let elegir: number = rls.questionInt(
@@ -130,23 +130,23 @@ export class Menu implements Instrucciones {
     console.clear();
     switch (elegir) {
       case 1:
-        console.log("Opción 1: Tragamonedas");
+        console.log("Opción 1: Tragamonedas 🎰");
         this.menuTragamonedas(usuario, tragamoneda);
         break;
       case 2:
-        console.log("Opción 2: BlackJack");
+        console.log("Opción 2: Blackjack 🃏");
         this.menuBlackJack(usuario, blackJack);
         break;
       case 3:
-        console.log("Opción 3: Dados");
+        console.log("Opción 3: Dados 🎲");
         this.menuDados(usuario, dado);
         break;
       case 0:
-        console.log("Opción 0: Volver al menu principal");
+        console.log("Opción 0: Volver al menu principal ⬅️​​");
         this.menuPrincipal(usuario, tragamoneda, tragamoneda2, dado, blackJack);
         break;
       default:
-        console.log("Opción no válida. Por favor, elige entre 0 y 3.");
+        console.log("❌ Opción no válida. Por favor, elige entre 0 y 3.");
         setTimeout(() => {
           this.menuJuegos(usuario, tragamoneda, tragamoneda2, dado, blackJack);
         }, 2000);
@@ -157,10 +157,10 @@ export class Menu implements Instrucciones {
   menuSaldo(usuario: Usuario, tragamoneda: Tragamoneda) {
     console.clear();
     console.log(
-      "--------------SALDO--------------------\n" +
-        "1 - Saldo Actual\n" +
-        "2 - Agregar saldo\n" +
-        "0 - Volver al menu principal\n" +
+      "--------------💲 SALDO 💲--------------------\n" +
+        "1 - ​Saldo Actual ✔️​\n" +
+        "2 - ​Agregar saldo ➕​\n" +
+        "0 - ​Volver al menu principal ⬅️​​\n" +
         "----------------------------------------"
     );
     let elegir: number = rls.questionInt(
@@ -169,23 +169,23 @@ export class Menu implements Instrucciones {
     console.clear();
     switch (elegir) {
       case 1:
-        console.log(`Opción 1: Saldo Actual : ${usuario.getSaldo()}`);
+        console.log(`Opción 1: ​Saldo Actual ✔️ : ${usuario.getSaldo()}`);
         setTimeout(() => {
           this.menuSaldo(usuario, tragamoneda);
         }, 2000);
         break;
       case 2:
-        console.log(`Opción 2: Agregar Saldo`);
-        console.log(`Saldo Actual : ${usuario.getSaldo()}`)
+        console.log(`Opción 2: Agregar saldo ➕`);
+        console.log(`Saldo Actual ✔️ : ${usuario.getSaldo()}`)
         usuario.agregarSaldo()
-        console.log(`Nuevo Saldo : ${usuario.getSaldo()}`)
+        console.log(`Nuevo Saldo 💵​: ${usuario.getSaldo()}`)
 
         setTimeout(() => {
           this.menuSaldo(usuario, tragamoneda);
         }, 2000);
         break;
       case 0:
-        console.log("Opción 0: Menu Principal");
+        console.log("Opción 0: Menu Principal ⬅️​​");
         this.menuPrincipal(
           usuario,
           tragamoneda,
@@ -195,7 +195,7 @@ export class Menu implements Instrucciones {
         );
         break;
       default:
-        console.log("Opción no válida. Por favor, elige entre 0 y 1");
+        console.log("❌ Opción no válida. Por favor, elige entre 0 y 1");
         setTimeout(() => {
           this.menuSaldo(usuario, tragamoneda);
         }, 2000);
@@ -206,13 +206,13 @@ export class Menu implements Instrucciones {
   menuTragamonedas(usuario: Usuario, MaquinaDeJuego: MaquinaDeJuego) {
     console.clear();
     console.log(
-      "---------------TRAGAMONEDAS-------------\n" +
-        "1 - Instrucciones\n" +
-        "2 - Jugar Tragamonedas x3 Lineas\n" +
-        "3 - Jugar Tragamonedas x5 Lineas\n" +
-        "4 - Modificar Apuesta\n" +
-        "5 - Saldo Actual\n" +
-        "0 - Volver al menu principal\n" +
+      "--------------🎰 TRAGAMONEDAS 🎰-------------\n" +
+        "1 - Instrucciones 📃​\n" +
+        "2 - Jugar Tragamonedas x3 Lineas ✨​\n" +
+        "3 - Jugar Tragamonedas x5 Lineas ✨​\n" +
+        "4 - Modificar Apuesta ⚙️​\n" +
+        "5 - Saldo Actual ​✔️\n" +
+        "0 - Volver al menu principal ⬅️\n" +
         "----------------------------------------"
     );
     let elegir: number = rls.questionInt(
@@ -221,14 +221,14 @@ export class Menu implements Instrucciones {
     console.clear();
     switch (elegir) {
       case 1:
-        console.log("Opción 1: Instrucciones");
+        console.log("Opción 1: Instrucciones 📃");
         this.mostrarInstrucciones(this.instruccionesTragamonedas);
         setTimeout(() => {
           this.menuTragamonedas(usuario, MaquinaDeJuego);
         }, 7000);
         break;
       case 2:
-        console.log("Opción 2: Jugar Tragamonedas x3 Lineas");
+        console.log("Opción 2: Jugar Tragamonedas x3 Lineas ✨");
         let elegir: number = 1;
         while (elegir === 1) {
           this.tragamoneda.juego(usuario);
@@ -240,7 +240,7 @@ export class Menu implements Instrucciones {
 
         break;
       case 3:
-        console.log("Opción 3: Jugar Tragamonedas x5 Lineas");
+        console.log("Opción 3: Jugar Tragamonedas x5 Lineas ✨");
         let elegir2 = 1;
         while (elegir2 === 1) {
           this.tragamoneda2.juego(usuario);
@@ -252,17 +252,17 @@ export class Menu implements Instrucciones {
 
         break;
       case 4:
-        console.log("Opción 4: Modificar apuesta");
+        console.log("Opción 4: Modificar Apuesta ⚙️");
         this.menuModificarApuesta(usuario, this.tragamoneda);
         break;
       case 5:
-        console.log(`Opción 5: Saldo Actual : ${usuario.getSaldo()}`);
+        console.log(`Opción 5: Saldo Actual ​✔️ : ${usuario.getSaldo()}`);
         setTimeout(() => {
           this.menuTragamonedas(usuario, this.tragamoneda);
         }, 2000);
         break;
       case 0:
-        console.log("Opción 0: Volver al menu principal");
+        console.log("Opción 0: Volver al menu principal ⬅️");
         this.menuPrincipal(
           usuario,
           this.tragamoneda,
@@ -272,7 +272,7 @@ export class Menu implements Instrucciones {
         );
         break;
       default:
-        console.log("Opción no válida. Por favor, elige entre 1 y 4.");
+        console.log("❌ Opción no válida. Por favor, elige entre 1 y 4.");
         setTimeout(() => {
           this.menuTragamonedas(usuario, this.tragamoneda);
         }, 2000);
@@ -283,11 +283,11 @@ export class Menu implements Instrucciones {
   menuModificarApuesta(usuario: Usuario, tragamoneda: Tragamoneda) {
     console.clear();
     console.log(
-      "-----------MODIFICAR APUESTA------------\n" +
+      "-----------⚙️ MODIFICAR APUESTA ⚙️------------\n" +
         "1 - Valor de la apuesta 5\n" +
         "2 - Valor de la apuesta 10 y el multiplicador es 3\n" +
         "3 - Valor de la apuesta 12 y el multiplicador es 4\n" +
-        "0 - Volver al menu Tragamonedas\n" +
+        "0 - Volver al menu Tragamonedas ⬅\n" +
         "----------------------------------------"
     );
     let elegir: number = rls.questionInt(
@@ -328,14 +328,14 @@ export class Menu implements Instrucciones {
         break;
 
       case 0:
-        console.log("Opción 0: Volver al menu principal");
+        console.log("Opción 0: Volver al menu principal ⬅️");
         this.menuTragamonedas(
           usuario,
           tragamoneda,
         );
         break;
       default:
-        console.log("Opción no válida. Por favor, elige entre 0 y 3.");
+        console.log("❌ Opción no válida. Por favor, elige entre 0 y 3.");
         setTimeout(() => {
           this.menuModificarApuesta(usuario, tragamoneda);
         }, 2000);
@@ -346,11 +346,11 @@ export class Menu implements Instrucciones {
   menuDados(usuario: Usuario, MaquinaDeJuego: MaquinaDeJuego) {
     console.clear();
     console.log(
-      "-----------------DADOS------------------\n" +
-        "1 - Instrucciones\n" +
-        "2 - Jugar\n" +
-        "3 - Saldo Actual\n" +
-        "0 - Volver al menu principal\n" +
+      "----------------🎲 DADOS 🎲------------------\n" +
+        "1 - Instrucciones 📃​\n" +
+        "2 - Jugar ✨\n" +
+        "3 - Saldo Actual ✔️\n" +
+        "0 - Volver al menu principal ⬅️​\n" +
         "----------------------------------------"
     );
     let elegir: number = rls.questionInt(
@@ -359,14 +359,14 @@ export class Menu implements Instrucciones {
     console.clear();
     switch (elegir) {
       case 1:
-        console.log("Opción 1: Instrucciones");
+        console.log("Opción 1: Instrucciones 📃");
         this.mostrarInstrucciones(this.instruccionesDados);
         setTimeout(() => {
           this.menuDados(usuario, MaquinaDeJuego);
         }, 7000);
         break;
       case 2:
-        console.log("Opción 2: Jugar");
+        console.log("Opción 2: Jugar ✨");
         let elegir: number = 1;
         while (elegir === 1) {
           this.dado.juego(usuario);
@@ -378,13 +378,13 @@ export class Menu implements Instrucciones {
 
         break;
       case 3:
-        console.log(`Opción 3: Saldo Actual : ${usuario.getSaldo()}`);
+        console.log(`Opción 3: Saldo Actual ✔️ : ${usuario.getSaldo()}`);
         setTimeout(() => {
           this.menuDados(usuario, this.tragamoneda);
         }, 2000);
         break;
       case 0:
-        console.log("Opción 0: Volver al menu principal");
+        console.log("Opción 0: Volver al menu principal ⬅️");
         this.menuPrincipal(
           usuario,
           this.tragamoneda,
@@ -394,7 +394,7 @@ export class Menu implements Instrucciones {
         );
         break;
       default:
-        console.log("Opción no válida. Por favor, elige entre 1 y 3.");
+        console.log("❌ Opción no válida. Por favor, elige entre 1 y 3.");
         setTimeout(() => {
           this.menuDados(usuario, this.tragamoneda);
         }, 2000);
@@ -405,11 +405,11 @@ export class Menu implements Instrucciones {
   menuBlackJack(usuario: Usuario, MaquinaDeJuego: MaquinaDeJuego) {
     console.clear();
     console.log(
-      "-----------------BlackJack------------------\n" +
-        "1 - Instrucciones\n" +
-        "2 - Jugar\n" +
-        "3 - Saldo Actual\n" +
-        "0 - Volver al menu principal\n" +
+      "----------------🃏 BLACKJACK 🃏------------------\n" +
+        "1 - Instrucciones 📃​\n" +
+        "2 - Jugar ✨\n" +
+        "3 - Saldo Actual ✔️\n" +
+        "0 - Volver al menu principal ⬅️​\n" +
         "----------------------------------------"
     );
     let elegir: number = rls.questionInt(
@@ -418,14 +418,14 @@ export class Menu implements Instrucciones {
     console.clear();
     switch (elegir) {
       case 1:
-        console.log("Opción 1: Instrucciones");
+        console.log("Opción 1: Instrucciones 📃");
         this.mostrarInstrucciones(this.instruccionesBlackjack);
         setTimeout(() => {
           this.menuBlackJack(usuario, MaquinaDeJuego);
         }, 7000);
         break;
       case 2:
-        console.log("Opción 2: Jugar");
+        console.log("Opción 2: Jugar ✨");
         let elegir: number = 1;
         while (elegir === 1) {
           this.blackJack.juego(usuario);
@@ -437,13 +437,13 @@ export class Menu implements Instrucciones {
 
         break;
       case 3:
-        console.log(`Opción 4: Saldo Actual : ${usuario.getSaldo()}`);
+        console.log(`Opción 4: Saldo Actual ✔️ : ${usuario.getSaldo()}`);
         setTimeout(() => {
           this.menuBlackJack(usuario, this.tragamoneda);
         }, 2000);
         break;
       case 0:
-        console.log("Opción 0: Volver al menu principal");
+        console.log("Opción 0: Volver al menu principal ⬅️");
         this.menuPrincipal(
           usuario,
           this.tragamoneda,
@@ -453,7 +453,7 @@ export class Menu implements Instrucciones {
         );
         break;
       default:
-        console.log("Opción no válida. Por favor, elige entre 1 y 3.");
+        console.log("❌ Opción no válida. Por favor, elige entre 1 y 3.");
         setTimeout(() => {
           this.menuBlackJack(usuario, this.tragamoneda);
         }, 2000);
